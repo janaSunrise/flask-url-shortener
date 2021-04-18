@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
-from .config import SQLALCHEMY_DB_URI, HOST, PORT, DEBUG
+from .config import SQLALCHEMY_DB_URI
 
 app = Flask(__name__)
 
