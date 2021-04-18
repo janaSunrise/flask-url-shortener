@@ -28,6 +28,8 @@ The Web UI for shortening URLs, or The API to shorten URLs located at `/api/shor
 You can change the `HOST`, `PORT` and `DEBUG` mode, By changing the settings in `config.py` inside the `app/`
 folder.
 
+### Usage guide
+
 Here's how to use the API.
 
 Make a `GET` request to `/api/shorten?redirect_url=<your-url>`, Replace `<your-url>` with the URL
