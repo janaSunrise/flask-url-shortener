@@ -55,6 +55,8 @@ Here are the steps we do after the request for shortening an URL:
 - If you're using the API it ends here, But for the Web UI, We take user input, fetch the API using the
   internal `fetch` function in JavaScript, and display it in the Fields using Powerful JQuery.
 
+- Finally, on visiting the shortened link, We redirect to the URL to which redirection is specified.
+
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
