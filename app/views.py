@@ -1,9 +1,15 @@
-from flask import Blueprint, Response, jsonify, redirect, request
+from flask import Blueprint, Response, jsonify, redirect, request, render_template
 
 from app import db
 from .models import ShortenedLink
 
 views = Blueprint("/views", __name__, template_folder="templates")
+
+
+@views.route("/")
+def index():
+    return render_template("index.html", base_url=request.host_url)
+
 
 @views.route('/<short_url>')
 def redirect_to_url(short_url):
