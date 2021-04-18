@@ -22,7 +22,7 @@ class ShortenedLink(db.Model):
 
     def generate_short_link(self):
         characters = string.digits + string.ascii_letters
-        short_url = ''.join(random.choices(characters, k=random.randint(0, 5)))
+        short_url = ''.join(random.choices(characters, k=random.randint(1, 8)))
 
         last_record_id = self.query.count()
         base62_encoded_id = b62_encode(last_record_id)
