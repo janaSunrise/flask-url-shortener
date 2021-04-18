@@ -2,7 +2,7 @@ import string
 
 
 def b62_encode(number):
-    base = string.digits + string.lowercase + string.uppercase
+    base = string.digits + string.ascii_letters
 
     if number == 0:
         return "0"
