@@ -26,7 +26,7 @@ def api_url_shorten():
     request_data = request.args
 
     if not request_data or "redirect_url" not in request_data:
-        return Response("Please enter a valid POST request!", 400)
+        return Response("Please enter a redirect URL!", 400)
 
     url = request_data["redirect_url"]
     if not url.startswith(("http://", "https://")):
@@ -37,3 +37,18 @@ def api_url_shorten():
     db.session.commit()
 
     return jsonify({"short_url": request.host_url + shortened_link_obj.short_url}), 200
+
+
+@views.route("/api/info")
+def api_info():
+    request_data = request.args
+
+    if not request_data or "code" not in request_data:
+        return Response("Please enter a Shortened URL code or the URL!", 400)
+
+    code = request_data["code"]
+    if code.startswith(request.host_url):
+        code = code.replace(request.host_url, "")
+
+    link = ShortenedLink.query.filter_by(short_url=code).first_or_404()
+    return jsonify({"visits": link.visits}), 200
