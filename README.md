@@ -43,6 +43,19 @@ you want to shorten. Once done properly, It should return a JSON like the follow
 
 Where `<shortened-url>` will be the URL shortened by the APP.
 
+There is also an info endpoint, that shows the number of visits as of now only.
+
+Make a `GET` Request to `/api/info?code=<shortened_url_code>`, Replace the `<shortened_url_code>`
+with your code, and once done, it should return a JSON response like following:
+
+```json
+{
+  "visits": <visits>
+}
+```
+
+Note, Visits is an integer here.
+
 ## How it works?
 
 Here are the steps we do after the request for shortening an URL:
