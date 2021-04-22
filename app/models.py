@@ -1,5 +1,6 @@
 import random
 import string
+from datetime import datetime
 
 from app import db
 from .utils import b62_encode
@@ -12,6 +13,7 @@ class ShortenedLink(db.Model):
     short_url = db.Column(db.String(), unique=True)
     redirect_url = db.Column(db.String())
     visits = db.Column(db.Integer, default=0)
+    date_created = db.Column(db.DateTime, default=datetime.now)
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

@@ -50,11 +50,12 @@ with your code, and once done, it should return a JSON response like following:
 
 ```json
 {
-  "visits": <visits>
+  "visits": <visits>,
+  "date_created": <date_created>
 }
 ```
 
-Note, Visits is an integer here.
+Note, Visits is an integer here and `date_created` is a date.
 
 ## How it works?
 

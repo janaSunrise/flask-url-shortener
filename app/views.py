@@ -51,4 +51,6 @@ def api_info():
         code = code.replace(request.host_url, "")
 
     link = ShortenedLink.query.filter_by(short_url=code).first_or_404()
-    return jsonify({"visits": link.visits}), 200
+    return jsonify(
+        {"visits": link.visits, "created": link.date_created}
+    ), 200
