@@ -102,4 +102,6 @@ also be sure to contribute, if you're interested!
 
 [GPL V3](https://github.com/janaSunrise/flask-url-shortener/blob/main/LICENSE)
 
-
+<p align="center">
+  Made by Sunrit Jana with <3
+</p>
