@@ -51,7 +51,8 @@ with your code, and once done, it should return a JSON response like following:
 ```json
 {
   "visits": <visits>,
-  "date_created": <date_created>
+  "date_created": <date_created>,
+  "redirects_to": <URL>
 }
 ```
 
