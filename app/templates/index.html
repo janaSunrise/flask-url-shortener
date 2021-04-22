@@ -85,7 +85,7 @@
             fetch(`${base_url}/api/shorten?redirect_url=${textarea.val()}`)
             .then((resp) => resp.json())
             .then(function(data) {
-                shorten_area.val(data.short_url);
+                shorten_area.val(data.shortened_url);
             })
         }
     });

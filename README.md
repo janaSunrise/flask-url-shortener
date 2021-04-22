@@ -37,7 +37,7 @@ you want to shorten. Once done properly, It should return a JSON like the follow
 
 ```json
 {
-    "short_url": "<shortened-url>"
+    "shortened_url": "<shortened-url>"
 }
 ```
 

@@ -36,7 +36,7 @@ def api_url_shorten():
     db.session.add(shortened_link_obj)
     db.session.commit()
 
-    return jsonify({"short_url": request.host_url + shortened_link_obj.short_url}), 200
+    return jsonify({"shortened_url": request.host_url + shortened_link_obj.short_url}), 200
 
 
 @views.route("/api/info")
