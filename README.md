@@ -21,7 +21,9 @@ pipenv run start
 ```
 
 This should boot up the app on [127.0.0.1:5000](http://127.0.0.1:5000) by default. Open it to access
-The Web UI for shortening URLs, or The API to shorten URLs located at `/api/shorten`.
+The Web UI for shortening URLs, or The API to shorten URLs located at `/api/shorten`. You can also grab info
+about shortened URL from [127.0.0.1:5000/info](http://127.0.0.1:5000/info) too! It has an endpoint linked 
+(`/api/shorten`) for grabbing the info. More information below. 
 
 ### Configuration
 
