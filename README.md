@@ -4,7 +4,7 @@ A damn easy to use URL shortener made using Python and Flask microframework
 
 ## Installation and Usage
 
-This project uses Pipenv for it's dependency management. Here's how to install it.
+This project uses Pipenv for the dependency management. Here's how to install it.
 
 ```sh
 pipenv sync -d
@@ -12,7 +12,7 @@ pipenv sync -d
 
 ### Usage
 
-You can use the shortener API by it's API or Web UI too.
+You can use the shortener API by its API or Web UI too.
 
 Here's how to get started with running the App
 
@@ -65,11 +65,14 @@ Note, Visits is an integer here and `date_created` is a date.
 Here are the steps we do after the request for shortening an URL:
 
 - Check if the URL starts with `http://` or `https://`, if it doesn't, Add `http://` to the start.
+  
 - Next, Make a DB object for the link, and pass in the `redirect_url`, and wait for an ID and short URL
   to be assigned.
+  
 - The DB does the following steps for a unique URL:
   - Generates a Random string, consisting of Alphabets and Digits, and Base62 encodes the ID and adds them both
   - Adds and updates it in the Database
+  
 - Once the URL is generated, I send the JSON Response like this:
 ```json
 {
