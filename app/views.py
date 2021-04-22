@@ -11,6 +11,11 @@ def index():
     return render_template("index.html", base_url=request.host_url)
 
 
+@views.route("/info")
+def info():
+    return render_template("info.html", base_url=request.host_url)
+
+
 @views.route('/<short_url>')
 def redirect_to_url(short_url):
     link = ShortenedLink.query.filter_by(short_url=short_url).first_or_404()

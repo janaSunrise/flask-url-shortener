@@ -41,13 +41,13 @@
     <br/>
 
     <div class="container is-max-widescreen">
-        <h1 class="subtitle is-4" id="center">Get started with shortening your URL!</h1>
+        <h1 class="subtitle is-4" id="center">Get info about shortened URL!</h1>
     </div>
 
     <br/>
 
     <div class="container is-max-desktop">
-        <input id="redirect-url" class="input is-primary" type="url" placeholder="Enter your URL to be shortened!"
+        <input id="redirect-url" class="input is-primary" type="url" placeholder="Enter your URL grab info about!"
                required>
     </div>
 
@@ -55,23 +55,30 @@
 
     <div class="control">
         <div class="has-text-centered">
-            <button id="shorten-btn" class="button is-primary is-light is-medium">Shorten!</button>
+            <button id="shorten-btn" class="button is-primary is-light is-medium">Grab info!</button>
         </div>
     </div>
 
     <br/>
 
     <div class="container is-max-desktop">
-        <input id="copy-input" class="input is-primary" type="text" placeholder="Your shortened URL will appear here"
+        <label class="label">URL Visit count</label>
+        <input id="visits" class="input is-primary" type="text" placeholder="The URL has been visited n times..."
                readonly>
     </div>
 
     <br/>
 
-    <div class="control">
-        <div class="has-text-centered">
-            <button id="copy-to-clipboard" class="button is-primary is-light is-medium">Copy!</button>
-        </div>
+    <div class="container is-max-desktop">
+        <label class="label">URL Creation date</label>
+        <input id="created" class="input is-primary" type="text" placeholder="The URL was created on..." readonly>
+    </div>
+
+    <br/>
+
+    <div class="container is-max-desktop">
+        <label class="label">URL Redirect Info</label>
+        <input id="redirect" class="input is-primary" type="text" placeholder="The URL Redirects to..." readonly>
     </div>
 
 {% endblock %}
@@ -83,24 +90,15 @@
         // Generate URL
         $('#shorten-btn').click(function () {
             const textarea = $('#redirect-url');
-            const shorten_area = $('#copy-input');
 
             if (textarea.val() !== "") {
-                fetch(`${base_url}/api/shorten?redirect_url=${textarea.val()}`)
+                fetch(`${base_url}/api/info?code=${textarea.val()}`)
                     .then((resp) => resp.json())
                     .then(function (data) {
-                        shorten_area.val(data.shortened_url);
+                        $("#visits").val(data.visits);
+                        $("#redirect").val(data.redirects_to);
+                        $("#created").val(data.created);
                     })
-            }
-        });
-
-        // Copy to clipboard
-        $('#copy-to-clipboard').click(function () {
-            const textarea = $('#copy-input');
-
-            if (textarea.val() !== "") {
-                textarea.select();
-                document.execCommand('copy');
             }
         });
     </script>
