@@ -46,6 +46,11 @@
         </div>
     </nav>
 
+    <div class="notification is-danger" id="ratelimit-alert" hidden>
+        <button class="delete"></button>
+        You're shortening URLs too quick. Please try again later.
+    </div>
+
     <div class="container is-max-widescreen">
         <h1 class="subtitle is-4" id="center">Get started with shortening your URL!</h1>
     </div>
@@ -90,13 +95,22 @@
         $('#shorten-btn').click(function () {
             const textarea = $('#redirect-url');
             const shorten_area = $('#copy-input');
+            const ratelimit_alert = $("#ratelimit-alert");
 
             if (textarea.val() !== "") {
-                fetch(`${base_url}/api/shorten?redirect_url=${textarea.val()}`)
+                try {
+                    fetch(`${base_url}/api/shorten?redirect_url=${textarea.val()}`)
                     .then((resp) => resp.json())
                     .then(function (data) {
+                        ratelimit_alert.hide();
                         shorten_area.val(data.shortened_url);
                     })
+                    .catch(() => {
+                        ratelimit_alert.show();
+                    })
+                } catch (error) {
+                    ratelimit_alert.show();
+                }
             }
         });
 
