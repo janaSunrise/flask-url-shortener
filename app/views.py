@@ -17,7 +17,7 @@ def info():
     return render_template("info.html", base_url=request.host_url, github_url=GITHUB_URL)
 
 
-@views.route('/<short_url>')
+@views.route("/<short_url>")
 def redirect_to_url(short_url):
     link = ShortenedLink.query.filter_by(short_url=short_url).first_or_404()
 
@@ -35,6 +35,7 @@ def api_url_shorten():
         return Response("Please enter a redirect URL!", 400)
 
     url = request_data["redirect_url"]
+
     if not url.startswith(("http://", "https://")):
         url = "http://" + url
 

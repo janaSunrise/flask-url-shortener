@@ -10,8 +10,10 @@ class ShortenedLink(db.Model):
     __tablename__ = "shortened_link"
 
     id = db.Column(db.Integer, primary_key=True, unique=True)
+
     short_url = db.Column(db.String(), unique=True)
     redirect_url = db.Column(db.String())
+
     visits = db.Column(db.Integer, default=0)
     date_created = db.Column(db.DateTime, default=datetime.now)
 
@@ -28,12 +30,10 @@ class ShortenedLink(db.Model):
 
         last_record_id = self.query.count()
         base62_encoded_id = b62_encode(last_record_id)
-
         short_url += base62_encoded_id
 
         link = self.query.filter_by(short_url=short_url).first()
 
         if link:
             return self.generate_short_link()
-
         return short_url
