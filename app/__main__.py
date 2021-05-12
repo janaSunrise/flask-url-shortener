@@ -1,6 +1,6 @@
 from .config import HOST, PORT, DEBUG
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Import database
     from . import db
 

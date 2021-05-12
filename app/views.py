@@ -10,13 +10,17 @@ views = Blueprint("/views", __name__, template_folder="templates")
 @views.route("/")
 @limiter.exempt
 def index():
-    return render_template("index.html", base_url=request.host_url, github_url=GITHUB_URL)
+    return render_template(
+        "index.html", base_url=request.host_url, github_url=GITHUB_URL
+    )
 
 
 @views.route("/info")
 @limiter.exempt
 def info():
-    return render_template("info.html", base_url=request.host_url, github_url=GITHUB_URL)
+    return render_template(
+        "info.html", base_url=request.host_url, github_url=GITHUB_URL
+    )
 
 
 @views.route("/<short_url>")
@@ -46,7 +50,10 @@ def api_url_shorten():
     db.session.add(shortened_link_obj)
     db.session.commit()
 
-    return jsonify({"shortened_url": request.host_url + shortened_link_obj.short_url}), 200
+    return (
+        jsonify({"shortened_url": request.host_url + shortened_link_obj.short_url}),
+        200,
+    )
 
 
 @views.route("/api/info")
@@ -62,6 +69,13 @@ def api_info():
         code = code.replace(request.host_url, "")
 
     link = ShortenedLink.query.filter_by(short_url=code).first_or_404()
-    return jsonify(
-        {"visits": link.visits, "created": link.date_created, "redirects_to": link.redirect_url}
-    ), 200
+    return (
+        jsonify(
+            {
+                "visits": link.visits,
+                "created": link.date_created,
+                "redirects_to": link.redirect_url,
+            }
+        ),
+        200,
+    )

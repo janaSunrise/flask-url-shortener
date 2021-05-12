@@ -12,4 +12,4 @@ def b62_encode(number):
         number, i = divmod(number, 62)
         base62.append(base[i])
 
-    return ''.join(reversed(base62))
+    return "".join(reversed(base62))
