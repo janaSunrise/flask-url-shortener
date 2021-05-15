@@ -21,6 +21,38 @@
 </head>
 
 <body>
+<nav class="navbar is-warning" role="navigation" aria-label="main navigation">
+    <div class="container is-max-desktop">
+        <div class="navbar-brand">
+            <p class="navbar-item">
+                <a href="/" style="color: black;">
+                    {{ app_name }}
+                </a>
+            </p>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-item">
+                <a href="/info" style="color: black;">
+                    Get link Info
+                </a>
+            </div>
+        </div>
+
+        <div class="navbar-end">
+            <a class="navbar-item" href="{{ github_url }}">
+                GITHUB
+            </a>
+        </div>
+    </div>
+</nav>
+
 {% block content %}{% endblock %}
 
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

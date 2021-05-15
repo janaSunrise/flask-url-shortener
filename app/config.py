@@ -4,4 +4,5 @@ DEBUG = True
 
 SQLALCHEMY_DB_URI = f"sqlite:///app.db"
 
+APP_NAME = "Flask URL Shortener"
 GITHUB_URL = "https://github.com/janaSunrise/flask-url-shortener"

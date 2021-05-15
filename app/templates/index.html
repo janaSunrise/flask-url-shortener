@@ -14,38 +14,6 @@
 {% endblock %}
 
 {% block content %}
-    <nav class="navbar is-warning" role="navigation" aria-label="main navigation">
-        <div class="container is-max-desktop">
-            <div class="navbar-brand">
-                <p class="navbar-item">
-                    <a href="/" style="color: black;">
-                        <strong>Flask URL Shortener</strong>
-                    </a>
-                </p>
-
-                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a>
-            </div>
-
-            <div class="navbar-menu">
-                <div class="navbar-item">
-                    <a href="/info" style="color: black;">
-                        Get link Info
-                    </a>
-                </div>
-            </div>
-
-            <div class="navbar-end">
-                <a class="navbar-item" href="{{ github_url }}">
-                    GITHUB
-                </a>
-            </div>
-        </div>
-    </nav>
-
     <div class="notification is-danger" id="ratelimit-alert" hidden>
         <button class="delete"></button>
         You're shortening URLs too quick. Please try again later.
@@ -57,12 +25,13 @@
 
     <br/>
 
-    <div class="container is-max-desktop">
-        <input id="redirect-url" class="input is-primary" type="url" placeholder="Enter your URL to be shortened!"
-               required>
-    </div>
+    <div class="field has-addons">
+        <div class="container is-max-desktop">
+            <input id="redirect-url" class="input is-primary" type="url" placeholder="Enter your URL to be shortened!"
+                   required>
+        </div>
 
-    <br/>
+    </div>
 
     <div class="control">
         <div class="has-text-centered">
@@ -72,12 +41,13 @@
 
     <br/>
 
-    <div class="container is-max-desktop">
-        <input id="copy-input" class="input is-primary" type="text" placeholder="Your shortened URL will appear here"
-               readonly>
-    </div>
+    <div class="field has-addons">
+        <div class="container is-max-desktop">
+            <input id="copy-input" class="input is-primary" type="text" placeholder="Your shortened URL will appear here"
+                   readonly>
+        </div>
 
-    <br/>
+    </div>
 
     <div class="control">
         <div class="has-text-centered">
@@ -100,14 +70,14 @@
             if (textarea.val() !== "") {
                 try {
                     fetch(`${base_url}/api/shorten?redirect_url=${textarea.val()}`)
-                    .then((resp) => resp.json())
-                    .then(function (data) {
-                        ratelimit_alert.hide();
-                        shorten_area.val(data.shortened_url);
-                    })
-                    .catch(() => {
-                        ratelimit_alert.show();
-                    })
+                        .then((resp) => resp.json())
+                        .then(function (data) {
+                            ratelimit_alert.hide();
+                            shorten_area.val(data.shortened_url);
+                        })
+                        .catch(() => {
+                            ratelimit_alert.show();
+                        })
                 } catch (error) {
                     ratelimit_alert.show();
                 }

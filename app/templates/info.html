@@ -14,52 +14,18 @@
 {% endblock %}
 
 {% block content %}
-    <nav class="navbar is-warning" role="navigation" aria-label="main navigation">
-        <div class="container is-max-desktop">
-            <div class="navbar-brand">
-                <p class="navbar-item">
-                    <a href="/" style="color: black;">
-                        <strong>Flask URL Shortener</strong>
-                    </a>
-                </p>
-
-                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a>
-            </div>
-
-            <div class="navbar-menu">
-                <div class="navbar-item">
-                    <a href="/info" style="color: black;">
-                        Get link Info
-                    </a>
-                </div>
-            </div>
-
-            <div class="navbar-end">
-                <a class="navbar-item" href="{{ github_url }}">
-                    GITHUB
-                </a>
-            </div>
-        </div>
-    </nav>
-
-    <br/>
-
     <div class="container is-max-widescreen">
         <h1 class="subtitle is-4" id="center">Get info about shortened URL!</h1>
     </div>
 
     <br/>
 
-    <div class="container is-max-desktop">
-        <input id="redirect-url" class="input is-primary" type="url" placeholder="Enter your URL grab info about!"
-               required>
+    <div class="field has-addons">
+        <div class="container is-max-desktop">
+            <input id="redirect-url" class="input is-primary" type="url" placeholder="Enter your URL grab info about!"
+                   required>
+        </div>
     </div>
-
-    <br/>
 
     <div class="control">
         <div class="has-text-centered">
@@ -69,24 +35,28 @@
 
     <hr/>
 
-    <div class="container is-max-desktop">
-        <label class="label">URL Visit count</label>
-        <input id="visits" class="input is-primary" type="text" placeholder="The URL has been visited n times..."
-               readonly>
+    <div class="field has-addons">
+        <div class="container is-max-desktop">
+            <label class="label">URL Visit count</label>
+            <input id="visits" class="input is-primary" type="text" placeholder="The URL has been visited n times..."
+                   readonly>
+        </div>
+
     </div>
 
-    <br/>
+    <div class="field has-addons">
+        <div class="container is-max-desktop">
+            <label class="label">URL Creation date</label>
+            <input id="created" class="input is-primary" type="text" placeholder="The URL was created on..." readonly>
+        </div>
 
-    <div class="container is-max-desktop">
-        <label class="label">URL Creation date</label>
-        <input id="created" class="input is-primary" type="text" placeholder="The URL was created on..." readonly>
     </div>
 
-    <br/>
-
-    <div class="container is-max-desktop">
-        <label class="label">URL Redirect Info</label>
-        <input id="redirect" class="input is-primary" type="text" placeholder="The URL Redirects to..." readonly>
+    <div class="field has-addons">
+        <div class="container is-max-desktop">
+            <label class="label">URL Redirect Info</label>
+            <input id="redirect" class="input is-primary" type="text" placeholder="The URL Redirects to..." readonly>
+        </div>
     </div>
 
 {% endblock %}
