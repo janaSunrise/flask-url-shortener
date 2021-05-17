@@ -70,7 +70,7 @@
             const textarea = $('#redirect-url');
 
             if (textarea.val() !== "") {
-                fetch(`${base_url}/api/info?code=${textarea.val()}`)
+                fetch(`${base_url}api/info?code=${textarea.val()}`)
                     .then((resp) => resp.json())
                     .then(function (data) {
                         $("#visits").val(data.visits);

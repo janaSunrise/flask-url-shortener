@@ -25,6 +25,11 @@ The Web UI for shortening URLs, or The API to shorten URLs located at `/api/shor
 about shortened URL from [127.0.0.1:5000/info](http://127.0.0.1:5000/info) too! It has an endpoint linked 
 (`/api/shorten`) for grabbing the info. More information below. 
 
+**Note**: This project has ratelimiter configured. It can be changed in `config.py`, and Has no ratelimiting by default.
+It has the basic rule of 2 request every second, To prevent spamming, and it isn't a real ratelimiting rule. 
+You can configure as you need, Or leave it if you do not. For more info, Check 
+[Flask Limiter](https://pypi.org/project/Flask-Limiter/)
+
 ### Configuration
 
 You can change the `HOST`, `PORT` and `DEBUG` mode, By changing the settings in `config.py` inside the `app/`

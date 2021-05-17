@@ -14,8 +14,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="notification is-danger" id="ratelimit-alert" hidden>
-        <button class="delete"></button>
+    <div class="notification is-warning has-text-centered" id="ratelimit-alert" hidden>
         You're shortening URLs too quick. Please try again later.
     </div>
 
@@ -68,19 +67,15 @@
             const ratelimit_alert = $("#ratelimit-alert");
 
             if (textarea.val() !== "") {
-                try {
-                    fetch(`${base_url}/api/shorten?redirect_url=${textarea.val()}`)
-                        .then((resp) => resp.json())
-                        .then(function (data) {
-                            ratelimit_alert.hide();
-                            shorten_area.val(data.shortened_url);
-                        })
-                        .catch(() => {
-                            ratelimit_alert.show();
-                        })
-                } catch (error) {
-                    ratelimit_alert.show();
-                }
+                fetch(`${base_url}api/shorten?redirect_url=${textarea.val()}`)
+                    .then((resp) => resp.json())
+                    .then(function (data) {
+                        ratelimit_alert.hide();
+                        shorten_area.val(data.shortened_url);
+                    })
+                    .catch(() => {
+                        ratelimit_alert.show();
+                    })
             }
         });
 
