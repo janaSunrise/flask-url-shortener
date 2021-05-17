@@ -11,8 +11,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
 
     <style>
+        html {
+            background-color: whitesmoke;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
+        }
+
+        a {
+            color: white !important;
         }
     </style>
 
@@ -21,11 +29,11 @@
 </head>
 
 <body>
-<nav class="navbar is-warning" role="navigation" aria-label="main navigation">
+<nav class="navbar is-link" role="navigation" aria-label="main navigation">
     <div class="container is-max-desktop">
         <div class="navbar-brand">
             <p class="navbar-item">
-                <a href="/" style="color: black;">
+                <a href="/">
                     {{ app_name }}
                 </a>
             </p>
@@ -39,7 +47,7 @@
 
         <div class="navbar-menu">
             <div class="navbar-item">
-                <a href="/info" style="color: black;">
+                <a href="/info">
                     Get link Info
                 </a>
             </div>
