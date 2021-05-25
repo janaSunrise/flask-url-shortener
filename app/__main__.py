@@ -1,22 +1,24 @@
 from .config import HOST, PORT, DEBUG
+from .models import bring_databases_into_scope
 
 if __name__ == "__main__":
     # Import database
     from . import db
 
-    # Import Models
-    from .models import ShortenedLink
+    # Import Models and Create all tables
+    bring_databases_into_scope()
 
-    # Create all tables
     db.create_all()
 
     # Import main App
     from . import app
 
     # Add blueprints
-    from .views import views
+    from . import views
+    views_list = ["api", "main", "others"]
 
-    app.register_blueprint(views)
+    for view in views_list:
+        app.register_blueprint(getattr(views, view))
 
     # Run the App
     app.run(host=HOST, port=PORT, debug=DEBUG)

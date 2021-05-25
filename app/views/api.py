@@ -1,45 +1,12 @@
-from flask import Blueprint, Response, jsonify, redirect, request, render_template
+from flask import Blueprint, Response, jsonify, request
 
 from app import db, limiter
-from .config import APP_NAME, GITHUB_URL
-from .models import ShortenedLink
+from ..models.shortened_link import ShortenedLink
 
-views = Blueprint("/views", __name__, template_folder="templates")
-
-APP_CONF = {
-    "github_url": GITHUB_URL,
-    "app_name": APP_NAME
-}
+api = Blueprint("api", __name__, template_folder="templates", url_prefix="/api")
 
 
-@views.route("/")
-@limiter.exempt
-def index():
-    return render_template(
-        "index.html", base_url=request.host_url, **APP_CONF
-    )
-
-
-@views.route("/info")
-@limiter.exempt
-def info():
-    return render_template(
-        "info.html", base_url=request.host_url, **APP_CONF
-    )
-
-
-@views.route("/<short_url>")
-@limiter.exempt
-def redirect_to_url(short_url):
-    link = ShortenedLink.query.filter_by(short_url=short_url).first_or_404()
-
-    link.visits = link.visits + 1
-    db.session.commit()
-
-    return redirect(link.redirect_url)
-
-
-@views.route("/api/shorten")
+@api.route("/shorten")
 def api_url_shorten():
     request_data = request.args
 
@@ -61,7 +28,7 @@ def api_url_shorten():
     )
 
 
-@views.route("/api/info")
+@api.route("/info")
 @limiter.exempt
 def api_url_info():
     request_data = request.args

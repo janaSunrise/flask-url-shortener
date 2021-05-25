@@ -3,7 +3,7 @@ import string
 from datetime import datetime
 
 from app import db
-from .utils import b62_encode
+from ..utils import b62_encode
 
 
 class ShortenedLink(db.Model):
@@ -36,4 +36,5 @@ class ShortenedLink(db.Model):
 
         if link:
             return self.generate_short_link()
+
         return short_url
