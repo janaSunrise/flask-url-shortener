@@ -2,17 +2,6 @@
 
 {% block title %}Flask URL shortener{% endblock %}
 
-{% block head %}
-    <style>
-        #center {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 25px;
-        }
-    </style>
-{% endblock %}
-
 {% block content %}
     <div class="notification is-warning has-text-centered" id="ratelimit-alert" hidden>
         You're shortening URLs too quick. Please try again later.
@@ -24,15 +13,17 @@
 
     <br/>
 
-    <div class="field has-addons">
+    <div class="field">
         <div class="container is-max-desktop">
-            <input id="redirect-url" class="input is-primary" type="url" placeholder="Enter your URL to be shortened!"
-                   required>
+            <label class="class=" for="redirect-url">Enter your URL to be shortened</label>
+            <div class="control">
+                <input id="redirect-url" class="input is-primary" type="url" placeholder="URL Here!" required>
+            </div>
         </div>
 
     </div>
 
-    <div class="control">
+    <div class="control" id="copy-btn-div">
         <div class="has-text-centered">
             <button id="shorten-btn" class="button is-success is-medium">Shorten!</button>
         </div>
@@ -41,19 +32,28 @@
     <br/>
     <br/>
 
-    <div class="field has-addons">
-        <div class="container is-max-desktop">
-            <input id="copy-input" class="input is-primary" type="text"
-                   placeholder="Your shortened URL will appear here"
-                   readonly>
+    <div id="copy-area" hidden>
+        <div class="field">
+            <div class="container is-max-desktop">
+                <label for="copy-input">Copy your shortened URL</label>
+                <div class="control">
+                    <input id="copy-input" class="input is-primary" type="text"
+                                                       placeholder="Your shortened URL will appear here"
+                                                       readonly>
+                </div>
+            </div>
+
         </div>
 
-    </div>
-
-    <div class="control">
-        <div class="has-text-centered">
-            <button id="copy-to-clipboard" class="button is-success is-medium">Copy!</button>
+        <div class="field is-grouped container is-max-desktop">
+            <div class="control">
+                <button id="copy-to-clipboard" class="button is-success is-medium">Copy!</button>
+            </div>
+            <div class="control">
+                <button class="button is-link is-medium is-light" onclick="location.href = '/';">Shorten another URL!</button>
+            </div>
         </div>
+
     </div>
 
 {% endblock %}
@@ -74,6 +74,9 @@
                     .then(function (data) {
                         ratelimit_alert.hide();
                         shorten_area.val(data.shortened_url);
+
+                        $("#copy-area").show();
+                        $("#copy-btn-div").hide();
                     })
                     .catch(() => {
                         ratelimit_alert.show();

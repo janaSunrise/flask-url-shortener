@@ -1,0 +1,26 @@
+/* Global styles */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-family: 'Poppins', sans-serif;
+}
+
+input {
+    margin-left: 0;
+}
+
+/* navbar section */
+#navbar-url {
+    color: white !important;
+}
+
+/* Custom utility classes */
+#center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+}
