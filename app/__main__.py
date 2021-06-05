@@ -15,6 +15,7 @@ if __name__ == "__main__":
 
     # Add blueprints
     from . import views
+
     views_list = ["api", "main", "others"]
 
     for view in views_list:
