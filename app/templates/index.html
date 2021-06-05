@@ -50,7 +50,7 @@
                 <button id="copy-to-clipboard" class="button is-success is-medium">Copy!</button>
             </div>
             <div class="control">
-                <button class="button is-link is-medium is-light" onclick="location.href = '/';">Shorten another URL!</button>
+                <button class="button is-primary is-medium is-light" onclick="location.href = '/';">Shorten another URL!</button>
             </div>
         </div>
 
@@ -60,7 +60,7 @@
 
 {% block script %}
     <script>
-        let base_url = {{ base_url | tojson }};
+        let base_api_url = {{ base_api_url | tojson }};
 
         // Generate URL
         $('#shorten-btn').click(function () {
@@ -69,7 +69,7 @@
             const ratelimit_alert = $("#ratelimit-alert");
 
             if (textarea.val() !== "") {
-                fetch(`${base_url}api/shorten?redirect_url=${textarea.val()}`)
+                fetch(`${base_api_url}/shorten?redirect_url=${textarea.val()}`)
                     .then((resp) => resp.json())
                     .then(function (data) {
                         ratelimit_alert.hide();

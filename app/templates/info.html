@@ -27,7 +27,7 @@
     <div class="field has-addons">
         <div class="container is-max-desktop">
             <label class="label">URL Visit count</label>
-            <input id="visits" class="input is-primary" type="text" placeholder="The URL has been visited n times..."
+            <input id="visits" class="input is-primary" type="text" placeholder="How many times the URL has been visited."
                    readonly>
         </div>
 
@@ -36,7 +36,7 @@
     <div class="field has-addons">
         <div class="container is-max-desktop">
             <label class="label">URL Creation date</label>
-            <input id="created" class="input is-primary" type="text" placeholder="The URL was created on..." readonly>
+            <input id="created" class="input is-primary" type="text" placeholder="When was the URL created." readonly>
         </div>
 
     </div>
@@ -44,7 +44,7 @@
     <div class="field has-addons">
         <div class="container is-max-desktop">
             <label class="label">URL Redirect Info</label>
-            <input id="redirect" class="input is-primary" type="text" placeholder="The URL Redirects to..." readonly>
+            <input id="redirect" class="input is-primary" type="text" placeholder="Where does it redirect too." readonly>
         </div>
     </div>
 
@@ -52,14 +52,14 @@
 
 {% block script %}
     <script>
-        let base_url = {{ base_url | tojson }};
+        let base_api_url = {{ base_api_url | tojson }};
 
         // Generate URL
         $('#shorten-btn').click(function () {
             const textarea = $('#redirect-url');
 
             if (textarea.val() !== "") {
-                fetch(`${base_url}api/info?code=${textarea.val()}`)
+                fetch(`${base_api_url}/info?code=${textarea.val()}`)
                     .then((resp) => resp.json())
                     .then(function (data) {
                         $("#visits").val(data.visits);
