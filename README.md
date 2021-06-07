@@ -95,12 +95,6 @@ Contributions, issues and feature requests are welcome!
 
 Feel free to check [issues page](https://github.com/janaSunrise/flask-url-shortener/issues). 
 
-## 💬 Get in touch
-
-If you have various suggestions, questions or want to discuss things with our community, join our discord server!
-
-[![Discord](https://discordapp.com/api/guilds/695008516590534758/widget.png?style=shield)](https://discord.gg/cSC5ZZwYGQ)
-
 ## Show your support
 
 We love people's support in growing and improving. Be sure to leave a ⭐️ if you like the project and 
